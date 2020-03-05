@@ -1,13 +1,14 @@
 package com.r3.corda.lib.tokens.workflows.utilities
 
 import co.paralleluniverse.fibers.Suspendable
+import net.corda.core.contracts.StateAndRef
 import net.corda.core.cordapp.CordappConfig
 import net.corda.core.cordapp.CordappConfigException
+import net.corda.core.flows.FlowException
 import net.corda.core.identity.CordaX500Name
 import net.corda.core.identity.Party
 import net.corda.core.internal.randomOrNull
 import net.corda.core.node.ServiceHub
-import net.corda.core.transactions.TransactionBuilder
 
 // TODO getPreferredNotary should be loaded on start
 /**
@@ -83,8 +84,12 @@ internal fun addNotaryWithCheck(txb: TransactionBuilder, notary: Party): Transac
     if (txb.notary == null) {
         txb.notary = notary
     }
-    check(txb.notary == notary) {
-        "Notary passed to transaction builder (${txb.notary}) should be the same as the one used by input states ($notary)."
+    val txbNotary = txb.notary ?: throw IllegalStateException("Notary on the TXB must not be null.")
+    if(txbNotary != notary) {
+        throw NotaryCheckException(txb.inputStateAndRefs(), txbNotary)
     }
     return txb
 }
+
+//data class NotaryCheckException(val txb: TransactionBuilder): FlowException()
+data class NotaryCheckException(val inputStates: List<StateAndRef<*>>, val txBuilderNotary: Party): FlowException()

@@ -97,13 +97,13 @@ class GetDistributionList(val housePtr: TokenPointer<House>) : FlowLogic<List<Di
     }
 }
 
-@StartableByRPC
-class CheckTokenPointer(val housePtr: TokenPointer<House>) : FlowLogic<House>() {
-    @Suspendable
-    override fun call(): House {
-        return housePtr.pointer.resolve(serviceHub).state.data
-    }
-}
+//@StartableByRPC
+//class CheckTokenPointer(val housePtr: TokenPointer<House>) : FlowLogic<House>() {
+//    @Suspendable
+//    override fun call(): House {
+//        return housePtr.pointer.resolve(serviceHub).state.data
+//    }
+//}
 
 // TODO This is hack that will be removed after fix in Corda 5. startFlowDynamic doesn't handle type parameters properly.
 @StartableByRPC

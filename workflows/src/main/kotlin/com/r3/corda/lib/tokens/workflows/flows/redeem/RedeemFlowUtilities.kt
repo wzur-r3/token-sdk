@@ -11,17 +11,14 @@ import com.r3.corda.lib.tokens.selection.database.selector.DatabaseTokenSelectio
 import com.r3.corda.lib.tokens.workflows.internal.checkSameIssuer
 import com.r3.corda.lib.tokens.workflows.internal.checkSameNotary
 import com.r3.corda.lib.tokens.workflows.internal.selection.generateExitNonFungible
+import com.r3.corda.lib.tokens.workflows.utilities.*
 import com.r3.corda.lib.tokens.workflows.utilities.addNotaryWithCheck
-import com.r3.corda.lib.tokens.workflows.utilities.addTokenTypeJar
-import com.r3.corda.lib.tokens.workflows.utilities.heldTokensByTokenIssuer
-import com.r3.corda.lib.tokens.workflows.utilities.tokenAmountWithIssuerCriteria
 import net.corda.core.contracts.Amount
 import net.corda.core.contracts.StateAndRef
 import net.corda.core.identity.AbstractParty
 import net.corda.core.identity.Party
 import net.corda.core.node.ServiceHub
 import net.corda.core.node.services.vault.QueryCriteria
-import net.corda.core.transactions.TransactionBuilder
 
 /**
  * Add redeeming of multiple [inputs] to the [transactionBuilder] with possible [changeOutput].
