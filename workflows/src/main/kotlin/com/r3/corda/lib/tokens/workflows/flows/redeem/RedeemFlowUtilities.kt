@@ -19,7 +19,7 @@ import net.corda.core.identity.AbstractParty
 import net.corda.core.identity.Party
 import net.corda.core.node.ServiceHub
 import net.corda.core.node.services.vault.QueryCriteria
-
+import net.corda.core.transactions.TransactionBuilder
 /**
  * Add redeeming of multiple [inputs] to the [transactionBuilder] with possible [changeOutput].
  */

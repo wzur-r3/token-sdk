@@ -13,7 +13,7 @@ import com.r3.corda.lib.tokens.selection.database.selector.DatabaseTokenSelectio
 import com.r3.corda.lib.tokens.workflows.flows.move.addMoveFungibleTokens
 import com.r3.corda.lib.tokens.workflows.types.PartyAndAmount
 import com.r3.corda.lib.tokens.workflows.utilities.tokenAmountWithIssuerCriteria
-import net.corda.core.transactions.TransactionBuilder
+ import net.corda.core.transactions.TransactionBuilder
 import net.corda.core.utilities.getOrThrow
 import net.corda.testing.node.StartedMockNode
 import org.junit.Assert

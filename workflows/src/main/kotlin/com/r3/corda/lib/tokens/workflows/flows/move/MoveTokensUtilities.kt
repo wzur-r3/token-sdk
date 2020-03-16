@@ -11,6 +11,7 @@ import com.r3.corda.lib.tokens.workflows.internal.selection.generateMoveNonFungi
 import com.r3.corda.lib.tokens.workflows.types.PartyAndAmount
 import com.r3.corda.lib.tokens.workflows.types.PartyAndToken
 import com.r3.corda.lib.tokens.workflows.types.toPairs
+import com.r3.corda.lib.tokens.workflows.utilities.addNotaryWithCheck
 import com.r3.corda.lib.tokens.workflows.utilities.addTokenTypeJar
 import net.corda.core.contracts.Amount
 import net.corda.core.contracts.StateAndRef
@@ -42,7 +43,8 @@ fun addMoveTokens(
     transactionBuilder.apply {
         // Add a notary to the transaction.
         // TODO: Deal with notary change.
-        notary = inputs.map { it.state.notary }.toSet().single()
+        val notary = inputs.map { it.state.notary }.toSet().single()
+        addNotaryWithCheck(this, notary)
         outputGroups.forEach { issuedTokenType: IssuedTokenType, outputStates: List<AbstractToken> ->
             val inputGroup = inputGroups[issuedTokenType]
                     ?: throw IllegalArgumentException("No corresponding inputs for the outputs issued token type: $issuedTokenType")

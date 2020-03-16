@@ -15,8 +15,8 @@ import net.corda.core.identity.Party
 import net.corda.core.node.ServiceHub
 import net.corda.core.node.services.IdentityService
 import net.corda.core.transactions.LedgerTransaction
-import net.corda.core.transactions.TransactionBuilder
 import java.security.PublicKey
+import net.corda.core.transactions.TransactionBuilder
 
 /**
  * Utility function to persist a new entity pertaining to a distribution record.

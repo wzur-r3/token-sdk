@@ -9,8 +9,8 @@ import net.corda.core.flows.CollectSignaturesFlow
 import net.corda.core.flows.FlowLogic
 import net.corda.core.flows.FlowSession
 import net.corda.core.transactions.SignedTransaction
-import net.corda.core.transactions.TransactionBuilder
 import net.corda.core.utilities.ProgressTracker
+import net.corda.core.transactions.TransactionBuilder
 
 /**
  * Abstract class for the redeem token flows family.

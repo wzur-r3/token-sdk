@@ -9,6 +9,7 @@ import net.corda.core.identity.CordaX500Name
 import net.corda.core.identity.Party
 import net.corda.core.internal.randomOrNull
 import net.corda.core.node.ServiceHub
+import net.corda.core.transactions.TransactionBuilder
 
 // TODO getPreferredNotary should be loaded on start
 /**
@@ -85,7 +86,7 @@ internal fun addNotaryWithCheck(txb: TransactionBuilder, notary: Party): Transac
         txb.notary = notary
     }
     val txbNotary = txb.notary ?: throw IllegalStateException("Notary on the TXB must not be null.")
-    if(txbNotary != notary) {
+    if(txbNotary != notary && txb.inputStateAndRefs().isNotEmpty()) {
         throw NotaryCheckException(txb.inputStateAndRefs(), txbNotary)
     }
     return txb

@@ -3,9 +3,9 @@ package com.r3.corda.lib.tokens.workflows.flows.redeem
 import co.paralleluniverse.fibers.Suspendable
 import com.r3.corda.lib.tokens.contracts.states.AbstractToken
 import com.r3.corda.lib.tokens.contracts.types.TokenType
+import net.corda.core.transactions.TransactionBuilder
 import net.corda.core.contracts.StateAndRef
 import net.corda.core.flows.FlowSession
-import net.corda.core.transactions.TransactionBuilder
 
 /**
  * General inlined flow used to redeem any type of tokens with the issuer. Should be called on tokens' owner side.
